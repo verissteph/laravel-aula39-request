@@ -20,3 +20,7 @@ Route::get('/adicionar-filme', 'FilmeController@adicionarFilme');
 Route::post('/adicionar-filme', 'FilmeController@adicionarFilmePost');
 Route::get('/tabela', 'FilmeController@exibirTabela');
 Route::get('/tabela-filme/{id}', 'FilmeController@procurarFilmes');
+
+Route::get('/adicionar-usuario', 'UserController@create');
+Route::post('/adicionar-usuario', 'UserController@store');
+Route::get('/usuarios', 'UserController@index');

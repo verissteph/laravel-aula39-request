@@ -15,18 +15,30 @@
                 <div class="form-group">
                     <label for="titulo">Título</label>
                     <input class="form-control" type="text" name="titulo" id="titulo"/>
+                    @error('titulo')
+                    <div class='text-danger'>{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="classificacao">Classificação</label>
                     <input class="form-control" type="text" name="classificacao" id="classificacao"/>
+                    @error('classificacao')
+                    <div class='text-danger'>{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="premios">Prêmios</label>
                     <input class="form-control" type="text" name="premios" id="premios"/>
+                    @error('premios')
+                        <div class='text-danger'>{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="duracao">Duração</label>
                     <input class="form-control" type="text" name="duracao" id="duracao"/>
+                    @error('duracao')
+                        <div class='text-danger'>{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Data de estreia</label>
@@ -49,6 +61,18 @@
                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                             <?php } ?>
                         </select>
+                        @error('dia')
+                        <div class='text-danger'>{{$message}}</div>
+                        <br>
+                        @enderror
+                        @error('mes')
+                            <div class='text-danger'>{{$message}}</div>
+                            <br>
+                        @enderror
+                        @error('ano')
+                            <div class='text-danger'>{{$message}}</div>
+                            
+                        @enderror
                     </div>
                 </div>
             </div>
