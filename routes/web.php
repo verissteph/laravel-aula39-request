@@ -23,4 +23,11 @@ Route::get('/tabela-filme/{id}', 'FilmeController@procurarFilmes');
 
 Route::get('/adicionar-usuario', 'UserController@create');
 Route::post('/adicionar-usuario', 'UserController@store');
-Route::get('/usuarios', 'UserController@index');
+
+Route::get('/usuarios', 'UserController@index')->middleware('auth');
+//
+Route::auth();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
