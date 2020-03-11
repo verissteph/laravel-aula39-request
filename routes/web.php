@@ -18,3 +18,5 @@ Route::get('/filmes/procurar/{nome}', 'FilmeController@procurarFilmeNome');
 Route::get('/filmes', 'FilmeController@listar');
 Route::get('/adicionar-filme', 'FilmeController@adicionarFilme');
 Route::post('/adicionar-filme', 'FilmeController@adicionarFilmePost');
+Route::get('/tabela', 'FilmeController@exibirTabela');
+Route::get('/tabela-filme/{id}', 'FilmeController@procurarFilmes');
