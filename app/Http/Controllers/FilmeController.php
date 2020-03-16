@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\filmeRequest;
 use App\Actor;
 use App\Movie;
+use App\Genre;
 
 class FilmeController extends Controller
 {
@@ -48,7 +49,8 @@ class FilmeController extends Controller
 
     public function adicionarFilme()
     {
-        return view('adicionar_filme');
+        $genres = Genre::all();
+        return view('adicionar_filme',['genres'=> $genres]);
 
     }
 
@@ -58,13 +60,16 @@ class FilmeController extends Controller
         //dd($request->toArray());
         //return redirect('/filmes')->with('mensagem', 'Formulario salvo!');
         $novoFilme = new FilmeController();
-        $novoFilme->titulo = $request->titulo;
+        $novoFilme->title = $request->titulo;
         $novoFilme->classificacao = $request->classificacao;
         $novoFilme->premios = $request->premios;
         $novoFilme->duracao = $request->duracao;
         $novoFilme->dia = $request->dia;
         $novoFilme->mes = $request->dia;
         $novoFilme->ano = $request->ano;
+        $novoFilme->release_date = $request->ano-$request->mes-$request->dia;
+        $novoFilme->genre_id = $request->genre_id;
+        $novoFilme->save();
 
         return redirect('adicionar_filme')->with('mensagem', 'Usuario adicionado com sucesso');
     }

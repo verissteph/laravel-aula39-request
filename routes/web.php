@@ -12,6 +12,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/collection',function(){
+    $actor=App\Actor::find(33);
+    dd($actor->episodes->pluck('title'));
+    // $actor=App\
+});
+
+Route::get('/collection', function () {
+    $movie = App\Movie::find();
+    dd($movie->actor->pluck('first_name'));
+});
+Route::get('/collection', function () {
+    $genre = App\Genre::find();
+    dd($genre->movie->pluck('title'));
+});
+
 
 Route::get('/filmes/{id}', 'FilmeController@procurarFilmeId');
 Route::get('/filmes/procurar/{nome}', 'FilmeController@procurarFilmeNome');
@@ -28,6 +43,6 @@ Route::get('/usuarios', 'UserController@index')->middleware('auth');
 //
 Route::auth();
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

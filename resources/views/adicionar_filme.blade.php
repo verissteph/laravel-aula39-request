@@ -71,8 +71,17 @@
                         @enderror
                         @error('ano')
                             <div class='text-danger'>{{$message}}</div>
-                            
+
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Generos</label>
+                        <select class="form-control" name="genre_id">
+                            <option value="">Selecione um genero</option>
+                            @foreach($genres as $genre)
+                            <option value="{{$genre['id']}}">{{$genre['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
