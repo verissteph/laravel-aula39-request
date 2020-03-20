@@ -22,14 +22,27 @@ class FilmeController extends Controller
             6 => "Mary e Max"
         ];
         //code here
-        //return "O filme escolhido foi: $filmes[$id]";
+        return "O filme escolhido foi: $filmes[$id]";
 
     }
 
     public function procurarFilmeNome($nome)
     {
-        $f = Movie::query()->where('title', $nome)->first();
-        return $f->title;
+        // $f = Movie::query()->where('title', $nome)->first();
+        // return $f->title;
+        $filmes = [
+            1 => "Toy Story",
+            2 => "Procurando Nemo",
+            3 => "Avatar",
+            4 => "Star Wars: Episódio V",
+            5 => "Up",
+            6 => "Mary e Max"
+        ];
+        foreach($filmes as $filme){
+            if(strtolower($filme) == strtolower($nome)){
+                return $filme;
+            }
+        }
     }
 
     public function listar()
@@ -44,7 +57,7 @@ class FilmeController extends Controller
         // ];
         //return view('filmes', ['filmes' => $filmes]);
         $filmes = Movie::query()->paginate();
-        return view('filmes', ['filmes' => $filmes]);
+        return view('filmes', ['filmes'=>$filmes]);
     }
 
     public function adicionarFilme()
@@ -59,19 +72,26 @@ class FilmeController extends Controller
         //request()->input('mensagem');
         //dd($request->toArray());
         //return redirect('/filmes')->with('mensagem', 'Formulario salvo!');
-        $novoFilme = new FilmeController();
-        $novoFilme->title = $request->titulo;
-        $novoFilme->classificacao = $request->classificacao;
-        $novoFilme->premios = $request->premios;
-        $novoFilme->duracao = $request->duracao;
-        $novoFilme->dia = $request->dia;
-        $novoFilme->mes = $request->dia;
-        $novoFilme->ano = $request->ano;
-        $novoFilme->release_date = $request->ano-$request->mes-$request->dia;
-        $novoFilme->genre_id = $request->genre_id;
-        $novoFilme->save();
 
-        return redirect('adicionar_filme')->with('mensagem', 'Usuario adicionado com sucesso');
+        // $novoFilme = new FilmeController();
+        // $novoFilme->title = $request->titulo;
+        // $novoFilme->classificacao = $request->classificacao;
+        // $novoFilme->premios = $request->premios;
+        // $novoFilme->duracao = $request->duracao;
+        // $novoFilme->dia = $request->dia;
+        // $novoFilme->mes = $request->dia;
+        // $novoFilme->ano = $request->ano;
+        // $novoFilme->release_date = $request->ano-$request->mes-$request->dia;
+        // $novoFilme->genre_id = $request->genre_id;
+        // $novoFilme->save();
+
+        // return redirect('adicionar_filme')->with('mensagem', 'Usuario adicionado com sucesso');
+
+        $data =$request->all();
+        $novoFilme = new Movie();
+        $novoFilme->release_date ="$request->ano-$request->mes-$request->dia 00:00:00";
+        $novoFilme->fill($data)->save();
+        return redirect('/filmes')->with('mensagem','Formulario salvo!');
     }
     public function exibirTabela()
     {

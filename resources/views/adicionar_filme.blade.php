@@ -14,28 +14,28 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label for="titulo">Título</label>
-                    <input class="form-control" type="text" name="titulo" id="titulo"/>
+                    <input class="form-control" type="text" name="title" id="titulo"/>
                     @error('titulo')
                     <div class='text-danger'>{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="classificacao">Classificação</label>
-                    <input class="form-control" type="text" name="classificacao" id="classificacao"/>
+                    <input class="form-control" type="text" name="rating" id="rating"/>
                     @error('classificacao')
                     <div class='text-danger'>{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="premios">Prêmios</label>
-                    <input class="form-control" type="text" name="premios" id="premios"/>
+                    <input class="form-control" type="text" name="awards" id="awards"/>
                     @error('premios')
                         <div class='text-danger'>{{$message}}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="duracao">Duração</label>
-                    <input class="form-control" type="text" name="duracao" id="duracao"/>
+                    <input class="form-control" type="text" name="length" id="length"/>
                     @error('duracao')
                         <div class='text-danger'>{{$message}}</div>
                     @enderror

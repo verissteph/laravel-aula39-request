@@ -26,6 +26,7 @@
                     @endforeach
                 </tbody>
             </table>
+             {{$filmes->links()}}
             <div class="text-right m-2">
                 <a href="/adicionar-filme" class="btn btn-success">Adicionar Filme</a>
             </div>
